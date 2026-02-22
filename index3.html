@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Kalamda Ilman Finardi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #d4af37;
+      --text: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== BLACK GOLD GRADIENT ===== */
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e293b 100%);
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(2,6,23,0.85);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+      z-index: 100;
+      border-bottom: 1px solid rgba(212,175,55,0.25);
+    }
+
+    nav h1 {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #cbd5e1;
+      font-weight: 500;
+      transition: 0.25s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 24px 100px;
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(212,175,55,0.25) 0%, transparent 70%);
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      filter: blur(25px);
+    }
+
+    .hero img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      border: 3px solid var(--accent);
+    }
+
+    .hero h2 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      color: #f9fafb;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #cbd5e1;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #d4af37, #b8962e);
+      color: #020617;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 12px 35px rgba(212,175,55,0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 20px 50px rgba(212,175,55,0.5);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 24px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h3 {
+      font-size: 30px;
+      margin-bottom: 28px;
+      color: var(--accent);
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      margin-bottom: 22px;
+      transition: 0.25s ease;
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.85);
+    }
+
+    /* SKILLS */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-item {
+      background: rgba(15,23,42,0.75);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+      transition: 0.25s ease;
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 25px 70px rgba(0,0,0,0.9);
+      border-color: var(--accent);
+    }
+
+    /* CONTACT */
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(2,6,23,0.9));
+      backdrop-filter: blur(10px);
+      padding: 44px;
+      border-radius: 24px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.9);
+      border: 1px solid rgba(212,175,55,0.35);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 30px;
+      }
+
+      nav {
+        padding: 16px 20px;
+      }
+
+      nav div {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <h1>Kalamda Ilman Finardi</h1>
+    <div>
+      <a href="#about">Tentang</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="foto ai.png" alt="Foto Profil" />
+    <h2>Fresh Graduate S1 Keperawatan</h2>
+    <p>Berkomitmen memberikan asuhan keperawatan yang aman, empatik, dan profesional.</p>
+    <a class="btn" href="#contact">Hubungi Saya</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h3>Tentang Saya</h3>
+    <div class="card">
+      <p>
+        Sebagai fresh graduate S1 Keperawatan, saya memiliki ketertarikan untuk berkembang sebagai paramedis atau perawat perusahaan yang berfokus pada kesehatan dan keselamatan kerja. Saya dikenal sebagai pribadi yang teliti, bertanggung jawab, dan mampu menjaga ketenangan dalam situasi yang membutuhkan respon cepat. Saya memegang nilai profesional berupa caring, integritas, dan patient safety, serta didukung kemampuan komunikasi terapeutik dan kerja sama tim yang baik. Saya termotivasi untuk terus belajar dan memberikan kontribusi nyata dalam menjaga kesehatan tenaga kerja.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h3>Keahlian</h3>
+    <div class="skills">
+      <div class="skill-item">Monitoring TTV</div>
+      <div class="skill-item">BLS</div>
+      <div class="skill-item">Komunikasi Terapeutik</div>
+      <div class="skill-item">Dokumentasi Keperawatan</div>
+      <div class="skill-item">Manajemen Luka</div>
+      <div class="skill-item">Edukasi Pasien</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h3>Pengalaman</h3>
+    <div class="card">
+      <strong>Praktik Klinik</strong>
+      <p>Rumah Sakit Dustira • 2025</p>
+      <p>Selama menjalani praktik klinik, saya berkontribusi dalam asuhan keperawatan dasar di ruang rawat inap dengan pendampingan perawat. Saya membantu perawatan luka dekubitus sesuai prosedur, melakukan pemantauan tanda vital, serta memenuhi kebutuhan dasar pasien secara konsisten. Pengalaman tersebut membentuk ketelitian klinis, respons yang cepat, dan kesiapan bekerja di lingkungan pelayanan kesehatan.</p>
+    </div>
+
+    <div class="card">
+      <strong>Pelatihan</strong>
+      <p>Pelatihan BT&CLS • 2026</p>
+      <p>Menyelesaikan pelatihan BT&CLS dengan keterlibatan aktif pada simulasi bantuan hidup dasar, primary survey trauma, dan stabilisasi pasien gawat darurat. Berhasil memperkuat respon cepat, ketelitian tindakan, dan efektivitas kerja tim di situasi kritis.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h3>Kontak</h3>
+    <div class="contact-box">
+      <p>Email: kalamdailm31@gmail.com</p>
+      <p>LinkedIn: linkedin.com/in/kalamda-ilman-finardi</p>
+      <p>WhatsApp: 0895364392603</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Kalamda Ilman Finardi. All rights reserved.
+  </footer>
+
+</body>
+</html>
